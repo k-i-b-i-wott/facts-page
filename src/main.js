@@ -50,35 +50,41 @@ async function getCatFacts() {
 async function getCatImages() {    
     
     spinner.style.display='block';
+    const outputValue= document.getElementById('outputValue');
    
-    outputValue.innerHTML='';    
+    outputValue.innerHTML='';  
+    outputValue.style.display="flex";  
     const userLimit = parseInt(catImg.value) || 1;
     const limit = Math.min(userLimit, 10);
     try {
         const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
         const data = await response.json();
         console.log("API response",data);
-        let images = `<div style="display:flex; flex-wrap: wrap; justify-content:center; align-items: center; gap:1rem">`;
+        let images = `<div style="display:grid; grid-template-columns: repeat(3,1fr); justify-content:center; align-items: center; gap:1rem">`;
             data.forEach(cat => {          
             
                if(cat.url){
-                images +=`<img src="${cat.url}" alt="cat" width="150px" height="150px " style="object-fit:cover;" >`;
+                images +=`<img src="${cat.url}" alt="cat" width="200rem" height="200rem" style="object-fit:cover;" >`;
                }
             
             });
         images += `</div>`;    
 
         setTimeout(() => {    
+            spinner.style.display='none';
             outputValue.innerHTML='';
             outputValue.innerHTML=images ;            
-            spinner.style.display='none';
+           
         },2000);    
-         console.log(images);
+        console.log(images);
 
     } catch (error) {
         console.log(error);
         outputValue.innerHTML=`<p style="color:red;">Failed to load the image</p>`;
         spinner.style.display='none'; 
+
        }
+
+      
 }
 

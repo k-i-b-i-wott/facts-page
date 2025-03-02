@@ -66,9 +66,13 @@ z-index: 1000;
 
 
 }
-.cat{
-  display: none;
-}
+
+/* .imgSection{
+  display: grid;
+  
+  gap: 1rem;
+  flex-wrap: wrap;
+} */
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
