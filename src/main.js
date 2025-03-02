@@ -60,7 +60,8 @@ async function getCatImages() {
         const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
         const data = await response.json();
         console.log("API response",data);
-        let images = `<div style="display:grid; grid-template-columns: repeat(3,1fr); justify-content:center; align-items: center; gap:1rem">`;
+        let images = `<div class= "imgCat">`;                
+            
             data.forEach(cat => {          
             
                if(cat.url){

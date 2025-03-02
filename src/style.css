@@ -95,5 +95,34 @@ z-index: 1000;
     gap: 2rem;
     font-size: smaller;
   }
+  #spinner{
+    top: 60%;
+  }
   
  }
+
+ .imgCat{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+
+ }
+ @media (max-width: 44em) {
+  .imgCat{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  
+ }
+ @media (max-width: 400px) {
+  .imgCat{
+    grid-template-columns: repeat(1,1fr);
+  
+  }
+ }
+
+
+ 
