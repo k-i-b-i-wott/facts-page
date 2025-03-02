@@ -6,6 +6,7 @@ body,html{
 body{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #app{
@@ -46,8 +47,12 @@ button{
   
 }
 #spinner{
-  width: 100px;  
-  height: 100px;
+  margin-top: 3rem;
+  width: 15vw;
+  height: 15vw;
+ max-width: 100px;  
+ max-height: 100px;
+  
  border: 10px solid ;
  border-radius: 50%;
 
@@ -55,16 +60,19 @@ button{
   border-left: 10px solid rgb(240, 234, 237);
   border-right: 10px solid rgb(240, 234, 237);
   border-bottom:10px solid  rgb(224, 157, 188);
-  animation: spin 2s linear infinite; 
+  animation: spin 1s linear infinite; 
   display: none;
-position: fixed;
-top: 40%;
+position: absolute;
+/* top: 50%; */
 left: 45%;
 transform: translate(-50%, -50%);
 align-self: center;
-z-index: 1000;
+z-index: 10;
 
 
+}
+.container{
+  display: block;
 }
 
 /* .imgSection{
@@ -87,6 +95,7 @@ z-index: 1000;
 
     align-items: center;
     justify-content: center;
+  
   }
 
   #cat-quotes{
@@ -96,7 +105,10 @@ z-index: 1000;
     font-size: smaller;
   }
   #spinner{
-    top: 60%;
+    width: 20vw ;
+    height: 20vw;
+    border-width: 8px;
+    
   }
   
  }
