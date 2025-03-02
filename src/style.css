@@ -18,9 +18,20 @@ body{
  place-items: center;
 
  gap: 2rem;
- background-color: rgba(234, 199, 215, 0.626);
+ background-color:#FAD0C4;
  padding-bottom: 4rem;
 
+}
+
+#error-message{
+  color: black;
+  background-color: red;
+  text-align: center;
+  height: 3rem;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  display: none;
 }
 
 
@@ -37,7 +48,7 @@ input{
 button{
   height: 2rem;
   border-radius: .2rem;
-  background-color:rgb(224, 157, 188) ;
+  background-color:#C599B6 ;
 }
 #outputValue{
   display: none;
@@ -95,7 +106,10 @@ z-index: 10;
 
     align-items: center;
     justify-content: center;
-  
+    
+    form{
+      gap:3rem;
+    }
   }
 
   #cat-quotes{
@@ -125,6 +139,9 @@ z-index: 10;
  @media (max-width: 44em) {
   .imgCat{
     grid-template-columns: repeat(2,1fr);
+    form{
+      gap:2rem;
+    }
   }
 
   
@@ -133,6 +150,9 @@ z-index: 10;
   .imgCat{
     grid-template-columns: repeat(1,1fr);
   
+  }
+  form{
+    gap:1rem;
   }
  }
 

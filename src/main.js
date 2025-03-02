@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const catImg = document.getElementById('catImg');
  
 });
+function showError(message){
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+    setTimeout(() => {
+        errorMessage.style.display = 'none';
+    }, 6000);
+}
+
 
 
 
@@ -18,7 +27,13 @@ async function getCatFacts() {
     outputValue.innerHTML='';
        
     spinner.style.display='block';
-       
+    
+    if(!navigator.onLine){
+        spinner.style.display='none'
+        showError('There was an error. Please try again later');
+        return
+    }
+    
     const userLimit = parseInt( quote.value) || 1;
     const limit = Math.min(userLimit, 50);
     try {
@@ -54,6 +69,11 @@ async function getCatImages() {
    
     outputValue.innerHTML='';  
     outputValue.style.display="flex";  
+
+    if(!navigator.onLine){
+        showError('There was an error. Please try again later');
+        return
+    }
     const userLimit = parseInt(catImg.value) || 1;
     const limit = Math.min(userLimit, 10);
     try {
