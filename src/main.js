@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('factbtn').addEventListener('click', getCatFacts);
-    document.getElementById('imgbtn').addEventListener('click', getCatImages);
-    document.getElementById('outputValue').innerHTML='';
-    document.getElementById('spinner').style.display='none';
+    document.getElementById('imgbtn').addEventListener('click', getCatImages);  
+    const outputValue= document.getElementById('outputValue');
+    const quote = document.getElementById('quote');
+    const spinner = document.getElementById('spinner');
+    const catImg = document.getElementById('catImg');
  
 });
-const outputValue= document.getElementById('outputValue');
-const quote = document.getElementById('quote');
-const spinner = document.getElementById('spinner');
-const catImg = document.getElementById('catImg');
+
+
+
+
 
 
 async function getCatFacts() {
@@ -45,29 +47,37 @@ async function getCatFacts() {
 }   
 
 
-async function getCatImages() {
+async function getCatImages() {    
+    
     spinner.style.display='block';
+   
     outputValue.innerHTML='';    
     const userLimit = parseInt(catImg.value) || 1;
     const limit = Math.min(userLimit, 10);
     try {
-        const response = await fetch(`https://api.thecatapi.com/v1/images/search?count=${limit}`);
+        const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`);
         const data = await response.json();
-        console.log(data);
-        let images = `<div style="display:flex; flex-wrap: wrap; justify-content:center; align-items: center; gap:2rem"></div>`;
-        data.forEach(cat => {
-            images +=`<img src="${cat.url}" alt="cat" width="50px" height="50px " object-fit="cover" >`
-        });
-        images += '</div>'
+        console.log("API response",data);
+        let images = `<div style="display:flex; flex-wrap: wrap; justify-content:center; align-items: center; gap:1rem">`;
+            data.forEach(cat => {          
+            
+               if(cat.url){
+                images +=`<img src="${cat.url}" alt="cat" width="150px" height="150px " style="object-fit:cover;" >`;
+               }
+            
+            });
+        images += `</div>`;    
 
         setTimeout(() => {    
-            outputValue.innerHTML=images    
-            outputValue.style.display="flex"; 
+            outputValue.innerHTML='';
+            outputValue.innerHTML=images ;            
             spinner.style.display='none';
-        },1000);    
+        },2000);    
+         console.log(images);
+
     } catch (error) {
         console.log(error);
-        outputValue.innerHTML=`<p style="color:red;">Failed to load the image</p>`
+        outputValue.innerHTML=`<p style="color:red;">Failed to load the image</p>`;
         spinner.style.display='none'; 
        }
 }
