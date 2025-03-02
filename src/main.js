@@ -14,7 +14,7 @@ function showError(message){
     errorMessage.style.display = 'block';
     setTimeout(() => {
         errorMessage.style.display = 'none';
-    }, 6000);
+    }, 5000);
 }
 
 
@@ -72,6 +72,7 @@ async function getCatImages() {
     outputValue.style.display="flex";  
 
     if(!navigator.onLine){
+        spinner.style.display='none'
         showError('There was an error. Please try again later');
         return
     }
