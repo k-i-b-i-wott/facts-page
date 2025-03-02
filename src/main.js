@@ -56,6 +56,7 @@ async function getCatFacts() {
     } catch (error) {
         
         console.log(error);
+        showError('Failed to load the cat facts. Try again later');
         spinner.style.display='none';
     }
     
@@ -101,7 +102,7 @@ async function getCatImages() {
 
     } catch (error) {
         console.log(error);
-        outputValue.innerHTML=`<p style="color:red;">Failed to load the image</p>`;
+        showError('Failed to load the cat images. Try again later');
         spinner.style.display='none'; 
 
        }
